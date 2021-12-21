@@ -1,0 +1,252 @@
+openapi: 3.0.3
+info:
+  title: jumia API
+  description: Jumia Application API, You can read and test  the APIs from this documentation
+  version: "1.0"
+servers:
+- url: http://localhost:80
+  description: Default server for jumia
+paths:
+  /customers/v1:
+    get:
+      tags:
+      - customers
+      summary: list customers
+      description: list customers
+      operationId: customers#list
+      parameters:
+      - name: country
+        in: query
+        description: country
+        allowEmptyValue: true
+        schema:
+          type: string
+          description: country
+          default: all
+          example: uganda
+          enum:
+          - all
+          - cameroon
+          - ethiopia
+          - morocco
+          - mozambique
+          - uganda
+        example: cameroon
+      - name: state
+        in: query
+        description: state
+        allowEmptyValue: true
+        schema:
+          type: string
+          description: state
+          default: all
+          example: Valid
+          enum:
+          - all
+          - Valid
+          - NotValid
+        example: NotValid
+      - name: sort_direction
+        in: query
+        allowEmptyValue: true
+        schema:
+          type: string
+          default: desc
+          example: desc
+          enum:
+          - asc
+          - desc
+        example: desc
+      - name: sort_key
+        in: query
+        allowEmptyValue: true
+        schema:
+          type: string
+          default: CustomerID
+          example: CustomerName
+          enum:
+          - CustomerID
+          - CustomerName
+          - CustomerPhone
+        example: CustomerPhone
+      - name: page_number
+        in: query
+        allowEmptyValue: true
+        schema:
+          type: integer
+          default: 1
+          example: 1164233490493690354
+          format: int64
+        example: 5129104926968253684
+      - name: page_size
+        in: query
+        allowEmptyValue: true
+        schema:
+          type: integer
+          default: 20
+          example: 5768060969527568819
+          format: int64
+        example: 5687018978583649211
+      responses:
+        "200":
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListResponseBody'
+              example:
+                customers:
+                - Country: 2496508963508522800
+                  CountryCode: 2902339981513357177
+                  ID: 6410663858109321322
+                  Name: 7482810282227951744
+                  Phone: 1480352200424320871
+                  State: 7632961416346618751
+                - Country: 2496508963508522800
+                  CountryCode: 2902339981513357177
+                  ID: 6410663858109321322
+                  Name: 7482810282227951744
+                  Phone: 1480352200424320871
+                  State: 7632961416346618751
+                pagination:
+                  current_page: 1
+                  page_size: 3
+                  total_count: 33
+                  total_pages: 11
+  /customers/v1/swagger/swagger.json:
+    get:
+      tags:
+      - swagger
+      summary: Download gen/http/openapi.json
+      description: JSON document containing the API swagger definition
+      operationId: swagger#/customers/v1/swagger/swagger.json
+      responses:
+        "200":
+          description: File downloaded
+components:
+  schemas:
+    ListCustomerResp:
+      type: object
+      properties:
+        Country:
+          type: integer
+          description: customer country
+          example: 4943201674397204615
+          format: int64
+        CountryCode:
+          type: integer
+          description: country code
+          example: 5309768221733778004
+          format: int64
+        ID:
+          type: integer
+          description: customer ID
+          example: 584768495538468849
+          format: int64
+        Name:
+          type: integer
+          description: customer name
+          example: 877626366804560113
+          format: int64
+        Phone:
+          type: integer
+          description: customer phone
+          example: 2459806686456265224
+          format: int64
+        State:
+          type: integer
+          description: phone state
+          example: 3850119435759474212
+          format: int64
+      example:
+        Country: 1180729185564395079
+        CountryCode: 7631412108224818681
+        ID: 4793854188342920225
+        Name: 5854072228733500573
+        Phone: 3471871893904620866
+        State: 868691964530978673
+      required:
+      - ID
+      - Name
+      - Phone
+      - Country
+      - State
+      - CountryCode
+    ListResponseBody:
+      type: object
+      properties:
+        customers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListCustomerResp'
+          description: events
+          example:
+          - Country: 2496508963508522800
+            CountryCode: 2902339981513357177
+            ID: 6410663858109321322
+            Name: 7482810282227951744
+            Phone: 1480352200424320871
+            State: 7632961416346618751
+          - Country: 2496508963508522800
+            CountryCode: 2902339981513357177
+            ID: 6410663858109321322
+            Name: 7482810282227951744
+            Phone: 1480352200424320871
+            State: 7632961416346618751
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+      example:
+        customers:
+        - Country: 2496508963508522800
+          CountryCode: 2902339981513357177
+          ID: 6410663858109321322
+          Name: 7482810282227951744
+          Phone: 1480352200424320871
+          State: 7632961416346618751
+        - Country: 2496508963508522800
+          CountryCode: 2902339981513357177
+          ID: 6410663858109321322
+          Name: 7482810282227951744
+          Phone: 1480352200424320871
+          State: 7632961416346618751
+        pagination:
+          current_page: 1
+          page_size: 3
+          total_count: 33
+          total_pages: 11
+      required:
+      - customers
+      - pagination
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: integer
+          description: The current page
+          example: 1
+          format: int64
+        page_size:
+          type: integer
+          description: 'Max number of records per page '
+          example: 3
+          format: int64
+        total_count:
+          type: integer
+          description: Total records count
+          example: 33
+          format: int64
+        total_pages:
+          type: integer
+          description: Total pages
+          example: 11
+          format: int64
+      example:
+        current_page: 1
+        page_size: 3
+        total_count: 33
+        total_pages: 11
+tags:
+- name: customers
+  description: The customer service exposes endpoints.
+- name: swagger
+  description: The swagger service serves the API swagger definition.
