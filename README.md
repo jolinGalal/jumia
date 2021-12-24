@@ -31,6 +31,8 @@ It is a single page application for rendering customer data with ```sqlite``` da
    run ``` docker-compose up ``` in the termenal
  * navigate to ```cmd/customer compose.yml``` <br />
   run ```go run *.go ``` in the termenal
+  * use postman collection
+     https://www.getpostman.com/collections/c0425fc81e9b8bd90ea7
 # code description
 * validate phone number by using ``` validation package ```internal/model/country``` check for example
 ```
