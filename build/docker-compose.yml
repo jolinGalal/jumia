@@ -1,0 +1,9 @@
+version: '3.3'
+
+services:
+  customer:
+    image: jumia.azurecr.io/customer
+    build: 
+      context: ..
+      dockerfile: build/customer/Dockerfile
+  

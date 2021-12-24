@@ -25,15 +25,15 @@ type ListCustomerRespResponseBody struct {
 	// customer ID
 	ID int `form:"ID" json:"ID" xml:"ID"`
 	// customer name
-	Name int `form:"Name" json:"Name" xml:"Name"`
+	Name string `form:"Name" json:"Name" xml:"Name"`
 	// customer phone
-	Phone int `form:"Phone" json:"Phone" xml:"Phone"`
+	Phone string `form:"Phone" json:"Phone" xml:"Phone"`
 	// customer country
-	Country int `form:"Country" json:"Country" xml:"Country"`
+	Country string `form:"Country" json:"Country" xml:"Country"`
 	// phone state
-	State int `form:"State" json:"State" xml:"State"`
+	State string `form:"State" json:"State" xml:"State"`
 	// country code
-	CountryCode int `form:"CountryCode" json:"CountryCode" xml:"CountryCode"`
+	CountryCode string `form:"CountryCode" json:"CountryCode" xml:"CountryCode"`
 }
 
 // PaginationResponseBody is used to define fields on response body types.

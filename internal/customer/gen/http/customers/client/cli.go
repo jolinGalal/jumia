@@ -23,8 +23,8 @@ func BuildListPayload(customersListCountry string, customersListState string, cu
 	{
 		if customersListCountry != "" {
 			country = customersListCountry
-			if !(country == "all" || country == "cameroon" || country == "ethiopia" || country == "morocco" || country == "mozambique" || country == "uganda") {
-				err = goa.MergeErrors(err, goa.InvalidEnumValueError("country", country, []interface{}{"all", "cameroon", "ethiopia", "morocco", "mozambique", "uganda"}))
+			if !(country == "all" || country == "Cameroon" || country == "Ethiopia" || country == "Morocco" || country == "Mozambique" || country == "Uganda") {
+				err = goa.MergeErrors(err, goa.InvalidEnumValueError("country", country, []interface{}{"all", "Cameroon", "Ethiopia", "Morocco", "Mozambique", "Uganda"}))
 			}
 			if err != nil {
 				return nil, err
@@ -35,8 +35,8 @@ func BuildListPayload(customersListCountry string, customersListState string, cu
 	{
 		if customersListState != "" {
 			state = customersListState
-			if !(state == "all" || state == "Valid" || state == "NotValid") {
-				err = goa.MergeErrors(err, goa.InvalidEnumValueError("state", state, []interface{}{"all", "Valid", "NotValid"}))
+			if !(state == "all" || state == "Valid" || state == "Not Valid") {
+				err = goa.MergeErrors(err, goa.InvalidEnumValueError("state", state, []interface{}{"all", "Valid", "Not Valid"}))
 			}
 			if err != nil {
 				return nil, err
@@ -76,6 +76,12 @@ func BuildListPayload(customersListCountry string, customersListState string, cu
 			if err != nil {
 				return nil, fmt.Errorf("invalid value for pageNumber, must be INT")
 			}
+			if pageNumber < 1 {
+				err = goa.MergeErrors(err, goa.InvalidRangeError("pageNumber", pageNumber, 1, true))
+			}
+			if err != nil {
+				return nil, err
+			}
 		}
 	}
 	var pageSize int
@@ -86,6 +92,12 @@ func BuildListPayload(customersListCountry string, customersListState string, cu
 			pageSize = int(v)
 			if err != nil {
 				return nil, fmt.Errorf("invalid value for pageSize, must be INT")
+			}
+			if pageSize < 1 {
+				err = goa.MergeErrors(err, goa.InvalidRangeError("pageSize", pageSize, 1, true))
+			}
+			if err != nil {
+				return nil, err
 			}
 		}
 	}

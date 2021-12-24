@@ -1,4 +1,4 @@
-package country
+package factory
 
 import (
 	"testing"
@@ -8,8 +8,8 @@ import (
 
 // TestCameroonState ...
 func TestCameroonState(t *testing.T) {
-	var phone = "(237) 697151594"
-	State := newCameroon(phone).State()
+	var phone = "(237) 678000952"
+	State := NewCameroon(phone).State()
 	assert.Equal(t, State, true)
 
 }
@@ -17,7 +17,7 @@ func TestCameroonState(t *testing.T) {
 // TestCameroonStateFail ...
 func TestCameroonStateFail(t *testing.T) {
 	var phone = "(237) 6971515"
-	State := newCameroon(phone).State()
+	State := NewCameroon(phone).State()
 	assert.Equal(t, State, false)
 
 }
@@ -25,7 +25,7 @@ func TestCameroonStateFail(t *testing.T) {
 // TestCameroonStateEmty ...
 func TestCameroonStateEmty(t *testing.T) {
 	var phone = ""
-	State := newCameroon(phone).State()
+	State := NewCameroon(phone).State()
 	assert.Equal(t, State, false)
 
 }

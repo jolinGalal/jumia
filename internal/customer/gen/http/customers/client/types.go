@@ -26,15 +26,15 @@ type ListCustomerRespResponseBody struct {
 	// customer ID
 	ID *int `form:"ID,omitempty" json:"ID,omitempty" xml:"ID,omitempty"`
 	// customer name
-	Name *int `form:"Name,omitempty" json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `form:"Name,omitempty" json:"Name,omitempty" xml:"Name,omitempty"`
 	// customer phone
-	Phone *int `form:"Phone,omitempty" json:"Phone,omitempty" xml:"Phone,omitempty"`
+	Phone *string `form:"Phone,omitempty" json:"Phone,omitempty" xml:"Phone,omitempty"`
 	// customer country
-	Country *int `form:"Country,omitempty" json:"Country,omitempty" xml:"Country,omitempty"`
+	Country *string `form:"Country,omitempty" json:"Country,omitempty" xml:"Country,omitempty"`
 	// phone state
-	State *int `form:"State,omitempty" json:"State,omitempty" xml:"State,omitempty"`
+	State *string `form:"State,omitempty" json:"State,omitempty" xml:"State,omitempty"`
 	// country code
-	CountryCode *int `form:"CountryCode,omitempty" json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	CountryCode *string `form:"CountryCode,omitempty" json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
 }
 
 // PaginationResponseBody is used to define fields on response body types.

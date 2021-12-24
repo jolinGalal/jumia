@@ -23,15 +23,15 @@ paths:
           type: string
           description: country
           default: all
-          example: uganda
+          example: Cameroon
           enum:
           - all
-          - cameroon
-          - ethiopia
-          - morocco
-          - mozambique
-          - uganda
-        example: cameroon
+          - Cameroon
+          - Ethiopia
+          - Morocco
+          - Mozambique
+          - Uganda
+        example: Morocco
       - name: state
         in: query
         description: state
@@ -40,12 +40,12 @@ paths:
           type: string
           description: state
           default: all
-          example: Valid
+          example: Not Valid
           enum:
           - all
           - Valid
-          - NotValid
-        example: NotValid
+          - Not Valid
+        example: all
       - name: sort_direction
         in: query
         allowEmptyValue: true
@@ -68,25 +68,25 @@ paths:
           - CustomerID
           - CustomerName
           - CustomerPhone
-        example: CustomerPhone
+        example: CustomerName
       - name: page_number
         in: query
         allowEmptyValue: true
         schema:
           type: integer
           default: 1
-          example: 1164233490493690354
-          format: int64
-        example: 5129104926968253684
+          example: 1756896058707291668
+          minimum: 1
+        example: 2220942928993318180
       - name: page_size
         in: query
         allowEmptyValue: true
         schema:
           type: integer
           default: 20
-          example: 5768060969527568819
-          format: int64
-        example: 5687018978583649211
+          example: 7917284985776656296
+          minimum: 1
+        example: 9096656981089799157
       responses:
         "200":
           description: OK response.
@@ -96,18 +96,30 @@ paths:
                 $ref: '#/components/schemas/ListResponseBody'
               example:
                 customers:
-                - Country: 2496508963508522800
-                  CountryCode: 2902339981513357177
-                  ID: 6410663858109321322
-                  Name: 7482810282227951744
-                  Phone: 1480352200424320871
-                  State: 7632961416346618751
-                - Country: 2496508963508522800
-                  CountryCode: 2902339981513357177
-                  ID: 6410663858109321322
-                  Name: 7482810282227951744
-                  Phone: 1480352200424320871
-                  State: 7632961416346618751
+                - Country: Ratione incidunt commodi blanditiis ut.
+                  CountryCode: Voluptates nesciunt.
+                  ID: 3850119435759474212
+                  Name: Nulla quia nisi ut.
+                  Phone: Est quia sapiente odit molestias omnis cum.
+                  State: Eaque inventore unde consequatur ut odit.
+                - Country: Ratione incidunt commodi blanditiis ut.
+                  CountryCode: Voluptates nesciunt.
+                  ID: 3850119435759474212
+                  Name: Nulla quia nisi ut.
+                  Phone: Est quia sapiente odit molestias omnis cum.
+                  State: Eaque inventore unde consequatur ut odit.
+                - Country: Ratione incidunt commodi blanditiis ut.
+                  CountryCode: Voluptates nesciunt.
+                  ID: 3850119435759474212
+                  Name: Nulla quia nisi ut.
+                  Phone: Est quia sapiente odit molestias omnis cum.
+                  State: Eaque inventore unde consequatur ut odit.
+                - Country: Ratione incidunt commodi blanditiis ut.
+                  CountryCode: Voluptates nesciunt.
+                  ID: 3850119435759474212
+                  Name: Nulla quia nisi ut.
+                  Phone: Est quia sapiente odit molestias omnis cum.
+                  State: Eaque inventore unde consequatur ut odit.
                 pagination:
                   current_page: 1
                   page_size: 3
@@ -129,42 +141,37 @@ components:
       type: object
       properties:
         Country:
-          type: integer
+          type: string
           description: customer country
-          example: 4943201674397204615
-          format: int64
+          example: Corrupti quae error minima.
         CountryCode:
-          type: integer
+          type: string
           description: country code
-          example: 5309768221733778004
-          format: int64
+          example: Delectus dolorem ea ut.
         ID:
           type: integer
           description: customer ID
-          example: 584768495538468849
+          example: 9025572277612742683
           format: int64
         Name:
-          type: integer
+          type: string
           description: customer name
-          example: 877626366804560113
-          format: int64
+          example: Voluptates dignissimos.
         Phone:
-          type: integer
+          type: string
           description: customer phone
-          example: 2459806686456265224
-          format: int64
+          example: Cupiditate voluptatibus.
         State:
-          type: integer
+          type: string
           description: phone state
-          example: 3850119435759474212
-          format: int64
+          example: Fugit officia.
       example:
-        Country: 1180729185564395079
-        CountryCode: 7631412108224818681
-        ID: 4793854188342920225
-        Name: 5854072228733500573
-        Phone: 3471871893904620866
-        State: 868691964530978673
+        Country: Quibusdam praesentium unde numquam eligendi accusantium.
+        CountryCode: Repudiandae rerum voluptatem.
+        ID: 2839162238327883531
+        Name: Ad totam et impedit itaque.
+        Phone: Nihil cum sit dignissimos ea tenetur.
+        State: Molestias iusto iure natus impedit.
       required:
       - ID
       - Name
@@ -181,34 +188,46 @@ components:
             $ref: '#/components/schemas/ListCustomerResp'
           description: events
           example:
-          - Country: 2496508963508522800
-            CountryCode: 2902339981513357177
-            ID: 6410663858109321322
-            Name: 7482810282227951744
-            Phone: 1480352200424320871
-            State: 7632961416346618751
-          - Country: 2496508963508522800
-            CountryCode: 2902339981513357177
-            ID: 6410663858109321322
-            Name: 7482810282227951744
-            Phone: 1480352200424320871
-            State: 7632961416346618751
+          - Country: Ratione incidunt commodi blanditiis ut.
+            CountryCode: Voluptates nesciunt.
+            ID: 3850119435759474212
+            Name: Nulla quia nisi ut.
+            Phone: Est quia sapiente odit molestias omnis cum.
+            State: Eaque inventore unde consequatur ut odit.
+          - Country: Ratione incidunt commodi blanditiis ut.
+            CountryCode: Voluptates nesciunt.
+            ID: 3850119435759474212
+            Name: Nulla quia nisi ut.
+            Phone: Est quia sapiente odit molestias omnis cum.
+            State: Eaque inventore unde consequatur ut odit.
+          - Country: Ratione incidunt commodi blanditiis ut.
+            CountryCode: Voluptates nesciunt.
+            ID: 3850119435759474212
+            Name: Nulla quia nisi ut.
+            Phone: Est quia sapiente odit molestias omnis cum.
+            State: Eaque inventore unde consequatur ut odit.
         pagination:
           $ref: '#/components/schemas/Pagination'
       example:
         customers:
-        - Country: 2496508963508522800
-          CountryCode: 2902339981513357177
-          ID: 6410663858109321322
-          Name: 7482810282227951744
-          Phone: 1480352200424320871
-          State: 7632961416346618751
-        - Country: 2496508963508522800
-          CountryCode: 2902339981513357177
-          ID: 6410663858109321322
-          Name: 7482810282227951744
-          Phone: 1480352200424320871
-          State: 7632961416346618751
+        - Country: Ratione incidunt commodi blanditiis ut.
+          CountryCode: Voluptates nesciunt.
+          ID: 3850119435759474212
+          Name: Nulla quia nisi ut.
+          Phone: Est quia sapiente odit molestias omnis cum.
+          State: Eaque inventore unde consequatur ut odit.
+        - Country: Ratione incidunt commodi blanditiis ut.
+          CountryCode: Voluptates nesciunt.
+          ID: 3850119435759474212
+          Name: Nulla quia nisi ut.
+          Phone: Est quia sapiente odit molestias omnis cum.
+          State: Eaque inventore unde consequatur ut odit.
+        - Country: Ratione incidunt commodi blanditiis ut.
+          CountryCode: Voluptates nesciunt.
+          ID: 3850119435759474212
+          Name: Nulla quia nisi ut.
+          Phone: Est quia sapiente odit molestias omnis cum.
+          State: Eaque inventore unde consequatur ut odit.
         pagination:
           current_page: 1
           page_size: 3

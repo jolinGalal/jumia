@@ -1,8 +1,8 @@
 package types
 
-import "github.com/jolinGalal/jumia/internal/models"
+import "github.com/jolinGalal/jumia/internal/models/customer"
 
-var customer = models.NewCustomer()
+var CustomerModel = customer.New()
 
 // CustomerSort ...
 var CustomerSort = struct {
@@ -17,9 +17,9 @@ var CustomerSort = struct {
 
 // CustomerSortFields map sorting field from the api to the database
 var CustomerSortFields = map[string]string{
-	CustomerSort.CustomerID:    customer.CustomerID(),
-	CustomerSort.CustomerName:  customer.CustomerName(),
-	CustomerSort.CustomerPhone: customer.CustomerPhone(),
+	CustomerSort.CustomerID:    CustomerModel.CustomerID(),
+	CustomerSort.CustomerName:  CustomerModel.CustomerName(),
+	CustomerSort.CustomerPhone: CustomerModel.CustomerPhone(),
 }
 
 // SortDirection ...

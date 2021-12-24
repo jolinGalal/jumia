@@ -51,15 +51,15 @@ type ListCustomerResp struct {
 	// customer ID
 	ID int
 	// customer name
-	Name int
+	Name string
 	// customer phone
-	Phone int
+	Phone string
 	// customer country
-	Country int
+	Country string
 	// phone state
-	State int
+	State string
 	// country code
-	CountryCode int
+	CountryCode string
 }
 
 type Pagination struct {

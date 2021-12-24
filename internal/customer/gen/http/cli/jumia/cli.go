@@ -29,7 +29,7 @@ func UsageCommands() string {
 
 // UsageExamples produces an example of a valid invocation of the CLI tool.
 func UsageExamples() string {
-	return os.Args[0] + ` customers list --country "mozambique" --state "NotValid" --sort-direction "desc" --sort-key "CustomerID" --page-number 1025368078463933441 --page-size 6165802978687595755` + "\n" +
+	return os.Args[0] + ` customers list --country "Cameroon" --state "Valid" --sort-direction "desc" --sort-key "CustomerName" --page-number 2459806686456265225 --page-size 4943201674397204616` + "\n" +
 		""
 }
 
@@ -157,6 +157,6 @@ list customers
     -page-size INT: 
 
 Example:
-    %[1]s customers list --country "mozambique" --state "NotValid" --sort-direction "desc" --sort-key "CustomerID" --page-number 1025368078463933441 --page-size 6165802978687595755
+    %[1]s customers list --country "Cameroon" --state "Valid" --sort-direction "desc" --sort-key "CustomerName" --page-number 2459806686456265225 --page-size 4943201674397204616
 `, os.Args[0])
 }

@@ -48,8 +48,8 @@ func DecodeListRequest(mux goahttp.Muxer, decoder func(*http.Request) goahttp.De
 		} else {
 			country = "all"
 		}
-		if !(country == "all" || country == "cameroon" || country == "ethiopia" || country == "morocco" || country == "mozambique" || country == "uganda") {
-			err = goa.MergeErrors(err, goa.InvalidEnumValueError("country", country, []interface{}{"all", "cameroon", "ethiopia", "morocco", "mozambique", "uganda"}))
+		if !(country == "all" || country == "Cameroon" || country == "Ethiopia" || country == "Morocco" || country == "Mozambique" || country == "Uganda") {
+			err = goa.MergeErrors(err, goa.InvalidEnumValueError("country", country, []interface{}{"all", "Cameroon", "Ethiopia", "Morocco", "Mozambique", "Uganda"}))
 		}
 		stateRaw := r.URL.Query().Get("state")
 		if stateRaw != "" {
@@ -57,8 +57,8 @@ func DecodeListRequest(mux goahttp.Muxer, decoder func(*http.Request) goahttp.De
 		} else {
 			state = "all"
 		}
-		if !(state == "all" || state == "Valid" || state == "NotValid") {
-			err = goa.MergeErrors(err, goa.InvalidEnumValueError("state", state, []interface{}{"all", "Valid", "NotValid"}))
+		if !(state == "all" || state == "Valid" || state == "Not Valid") {
+			err = goa.MergeErrors(err, goa.InvalidEnumValueError("state", state, []interface{}{"all", "Valid", "Not Valid"}))
 		}
 		sortDirectionRaw := r.URL.Query().Get("sort_direction")
 		if sortDirectionRaw != "" {
@@ -90,6 +90,9 @@ func DecodeListRequest(mux goahttp.Muxer, decoder func(*http.Request) goahttp.De
 				pageNumber = int(v)
 			}
 		}
+		if pageNumber < 1 {
+			err = goa.MergeErrors(err, goa.InvalidRangeError("pageNumber", pageNumber, 1, true))
+		}
 		{
 			pageSizeRaw := r.URL.Query().Get("page_size")
 			if pageSizeRaw == "" {
@@ -101,6 +104,9 @@ func DecodeListRequest(mux goahttp.Muxer, decoder func(*http.Request) goahttp.De
 				}
 				pageSize = int(v)
 			}
+		}
+		if pageSize < 1 {
+			err = goa.MergeErrors(err, goa.InvalidRangeError("pageSize", pageSize, 1, true))
 		}
 		if err != nil {
 			return nil, err

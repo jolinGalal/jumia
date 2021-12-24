@@ -1,35 +1,83 @@
 package country
 
-import "regexp"
+import (
+	"strings"
 
-// CountryI ...
-type CountryI interface {
-	Name() string
-	State() bool
+	"github.com/jolinGalal/jumia/internal/models/country/factory"
+	"github.com/jolinGalal/jumia/internal/models/country/types"
+)
+
+// CountryFacade ...
+type CountryFacade struct {
+	countryFactory
 }
 
 // New ...
 func New(phone *string) CountryI {
 
-	var re = regexp.MustCompile(`\(237\)\ [0-9]`)
-	if re.MatchString(*phone) {
-		return newCameroon(*phone)
+	if strings.HasPrefix(*phone, types.CountryCodes[types.CountryLst[0]]) {
+		return &CountryFacade{factory.NewCameroon(*phone)}
 	}
-	re = regexp.MustCompile(`\(251\)\ [0-9]`)
-	if re.MatchString(*phone) {
-		return newEthiopia(*phone)
+
+	if strings.HasPrefix(*phone, types.CountryCodes[types.CountryLst[1]]) {
+		return &CountryFacade{factory.NewEthiopia(*phone)}
 	}
-	re = regexp.MustCompile(`\(212\)\ [0-9]`)
-	if re.MatchString(*phone) {
-		return newMorocco(*phone)
+
+	if strings.HasPrefix(*phone, types.CountryCodes[types.CountryLst[2]]) {
+		return &CountryFacade{factory.NewMorocco(*phone)}
 	}
-	re = regexp.MustCompile(`\(258\)\ [0-9]`)
-	if re.MatchString(*phone) {
-		return newMozambique(*phone)
+
+	if strings.HasPrefix(*phone, types.CountryCodes[types.CountryLst[3]]) {
+		return &CountryFacade{factory.NewMozambique(*phone)}
 	}
-	re = regexp.MustCompile(`\(256\)\ [0-9]`)
-	if re.MatchString(*phone) {
-		return newUganda(*phone)
+
+	if strings.HasPrefix(*phone, types.CountryCodes[types.CountryLst[4]]) {
+		return &CountryFacade{factory.NewUganda(*phone)}
 	}
-	return nil
+	return &CountryFacade{}
+}
+
+// Name ...
+func (c *CountryFacade) Name() string {
+	if c.countryFactory != nil {
+		return c.countryFactory.Name()
+	}
+	return ""
+}
+
+//State ....
+func (c *CountryFacade) State() string {
+	if c.countryFactory != nil {
+		if c.countryFactory.State() {
+			return types.Statelst[0]
+		}
+	}
+	return types.Statelst[1]
+}
+
+// Code ...
+func (c *CountryFacade) Code() string {
+	if c.countryFactory != nil {
+		return c.countryFactory.Code()
+	}
+	return ""
+}
+
+// CountryCodeByName ...
+func (c *CountryFacade) CountryCodeByName(countryStr string) string {
+	if code, ok := types.CountryCodes[countryStr]; !ok {
+		return ""
+	} else {
+		return code
+	}
+}
+
+// CountryLst ...
+func (c *CountryFacade) GetCountries() []string {
+	return types.CountryLst
+}
+
+// GetStates ...
+func (c *CountryFacade) GetStates() []string {
+	return types.Statelst
 }
