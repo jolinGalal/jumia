@@ -24,6 +24,14 @@ It is a single page application for rendering customer data with ```sqlite``` da
 │   └── database
 │   └── utils
 └── README.md
+
+
+│   
+│   
+│   
+│   
+└── frontEnd
+
 ```
 # run project
 
@@ -33,6 +41,7 @@ It is a single page application for rendering customer data with ```sqlite``` da
   run ```go run *.go ``` in the termenal
   * use postman collection
      https://www.getpostman.com/collections/c0425fc81e9b8bd90ea7
+  * open ```index.html``` inside ```frontEnd```
 # code description
 * validate phone number by using ``` validation package ```internal/model/country``` check for example
 ```
