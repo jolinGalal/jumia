@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            input,p,td,th{font:14px Verdana}
+            table,td,th{border:solid 1px #ddd;border-collapse:collapse;padding:2px 3px;text-align:center}
+            th{font-weight:700}
+        </style>
+        <link rel="stylesheet" href="style.css" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" 
+              content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- Here a loader is created which 
+             loads till response comes -->
+        <!-- <div class="d-flex justify-content-center">
+            <div class="spinner-border" 
+                 role="status" id="loading">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div> -->
+        <h1>Customers</h1>
+        <!-- table for showing data -->
+        <table id="myTable">
+            <tr>
+             <th>ID</th>
+             <th>Name</th>
+             <th>Phone</th>
+             <th>Country</th>
+             <th>State</th>
+             <th>CountryCode</th>
+            </tr>
+           </table>
+           <label for="lname">Page:</label>
+           <input type="number"  id="pageNumber" name="">
+           <label id="pages"></label><br>
+           <label id="total"></label><br><br>
+          <input  id="refresh" type="submit" value="Refresh">
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script  src="script.js"></script>
+        
+    </body>
+</html>
